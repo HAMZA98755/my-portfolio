@@ -12,12 +12,12 @@ export default function HeaderClient({ lang }: { lang: "ar" | "en" }) {
   const [open, setOpen] = useState(false);
   const t = translations[lang];
   const { theme, colors, toggleTheme } = useTheme();
-  const th = colors;
+  
 
   return (
     <header
       className="shadow-lg z-50 border-b border-white"
-      style={{ backgroundColor: th.background }}
+      style={{ backgroundColor: colors.background }}
     >
       <div className="container flex items-center justify-between py-5">
         {/*Start Site Name  */}
@@ -25,7 +25,7 @@ export default function HeaderClient({ lang }: { lang: "ar" | "en" }) {
           <Link
             href={`/${lang}`}
             className="text-2xl font-extrabold"
-            style={{ color: th.text }}
+            style={{ color: colors.text }}
           >
             {t.ui.siteName}
           </Link>
@@ -34,7 +34,7 @@ export default function HeaderClient({ lang }: { lang: "ar" | "en" }) {
         {/* Start Navigation  */}
         <nav
           className="hidden md:flex items-center gap-4"
-          style={{ color: th.text }}
+          style={{ color: colors.text }}
         >
           <NavLink href={`/${lang}/about`}>{t.aboutPage.about}</NavLink>
           <NavLink href={`/${lang}/projects`}>{t.projects}</NavLink>
@@ -45,9 +45,9 @@ export default function HeaderClient({ lang }: { lang: "ar" | "en" }) {
         {/* Strat LanguageSwitcher And Mode Switcher  */}
         <div
           className="hidden ml-4 md:flex gap-4 justify-center items-center"
-          style={{ color: th.text }}
+          style={{ color: colors.text }}
         >
-          <LanguageSwitcher th={th} />
+          <LanguageSwitcher colors={colors} />
           <ModeSwitcher />
         </div>
         {/* End LanguageSwitcher And Mode Switcher  */}
@@ -59,7 +59,7 @@ export default function HeaderClient({ lang }: { lang: "ar" | "en" }) {
           <MdOutlineMenu
             onClick={() => setOpen(!open)}
             className="text-3xl cursor-pointer"
-            style={{ background: th.background, color: th.text }}
+            style={{ background: colors.background, color: colors.text }}
           />
         </div>
         {/* End Menu Icon  */}
@@ -81,7 +81,7 @@ export default function HeaderClient({ lang }: { lang: "ar" | "en" }) {
             
             <div className="flex gap-5 items-center mt-5">
               <div className="md:flex">
-                <LanguageSwitcher th={th} />
+                <LanguageSwitcher colors={colors} />
               </div>
               <div className="md:flex">
                 <ModeSwitcher />

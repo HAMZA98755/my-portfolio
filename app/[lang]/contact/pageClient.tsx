@@ -1,28 +1,26 @@
 'use client' 
-import ContactForm from '@/app/ui/Form/ContactForm';
+import ContactForm from '@/app/[lang]/contact/components/ContactForm';
 import {FaFacebook, FaLinkedin, FaGithub} from 'react-icons/fa';
 import { useTheme } from '@/app/contexts/ThemeContext';
+import type {Locale} from '@/app/translations'
+import {translations} from '@/app/translations'
 
-
-type Props = {
-  t: any
-}
-export default function ContactClient({ t }: Props) {
+export default function ContactClient({ lang }: {lang: Locale}) {
     const {colors} = useTheme();
-    const th = colors;
+    const t = translations[lang]
   return (
     // Start Content Section 
     <div className="py-16">
       {/* Start Container  */}
       <div className="container max-w-4xl">
         {/*Start Contact Word   */}
-        <h1 className="text-5xl font-bold mb-4 text-center" style={{color: th.text}}>
+        <h1 className="text-5xl font-bold mb-4 text-center" style={{color: colors.text}}>
           {t.contactPage.contact}
         </h1>
         {/*End Contact Word   */}
 
         {/* Start Contact Paragraph  */}
-        <p className="text-center text-lg mb-12" style={{color: th.textSecondary}}>
+        <p className="text-center text-lg mb-12" style={{color: colors.textSecondary}}>
           {t.contactPage.letMeHear}
         </p>
          {/* End Contact Paragraph  */}
@@ -33,7 +31,7 @@ export default function ContactClient({ t }: Props) {
 
           {/* Start Information Contact  */}
           <div className="space-y-8">
-            <h2 className="text-3xl font-bold" style={{color: th.text}}>
+            <h2 className="text-3xl font-bold" style={{color: colors.text}}>
               {t.contactPage.getInTouch}
             </h2>
             
@@ -43,10 +41,10 @@ export default function ContactClient({ t }: Props) {
               <div className="flex items-start gap-4">
                 <div className="text-2xl">✉️</div>
                 <div>
-                  <h3 className="font-bold mb-1" style={{color: th.text}}>
+                  <h3 className="font-bold mb-1" style={{color: colors.text}}>
                     {t.contactPage.email}
                   </h3>
-                  <p className="" style={{color: th.textSecondary}}>elhosni99@gmail.com</p>
+                  <p className="" style={{color: colors.textSecondary}}>elhosni99@gmail.com</p>
                 </div>
               </div>
               {/* End Email  */}
@@ -55,10 +53,10 @@ export default function ContactClient({ t }: Props) {
               <div className="flex items-start gap-4">
                 <div className="text-2xl">📱</div>
                 <div>
-                  <h3 className="font-bold mb-1" style={{color: th.text}}>
+                  <h3 className="font-bold mb-1" style={{color: colors.text}}>
                     {t.contactPage.phone}
                   </h3>
-                  <p className = '' style={{color: th.textSecondary}} dir='ltr'>+963 996 567 957</p>
+                  <p className = '' style={{color: colors.textSecondary}} dir='ltr'>+963 996 567 957</p>
                 </div>
               </div>
               {/* End Phone  */}
@@ -67,7 +65,7 @@ export default function ContactClient({ t }: Props) {
               <div className="flex items-start gap-4">
                 <div className="text-2xl">🌐</div>
                 <div>
-                  <h3 className="font-bold mb-3" style={{color: th.text}}>
+                  <h3 className="font-bold mb-3" style={{color: colors.text}}>
                     {t.contactPage.socialMedia}
                   </h3>
                   <div className="flex gap-4">
@@ -92,7 +90,7 @@ export default function ContactClient({ t }: Props) {
           {/* End Information Contact  */}
 
           {/* Start Contact Form  */}
-          <ContactForm t={t} th = {th} />
+          <ContactForm lang = {lang}/>
           {/* End Contact Form  */}
         </div>
         {/* End Grid That Display Information Contact And Form To Contact  */}

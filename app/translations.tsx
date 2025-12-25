@@ -18,7 +18,7 @@ export const translations = {
     homePage: {
       softWereEngineer: 'مهندس برمجيات &',
       webDeveloper: 'مطور واجهات أمامية',
-      welcome: 'مرحباً بك',
+      welcome: 'كيف استطيع مساعدتك؟',
       feature1Title: 'تطوير ويب',
       feature1Desc: 'بناء تطبيقات ويب حديثة وفعالة',
       feature2Title: 'حل المشكلات',
@@ -58,8 +58,8 @@ export const translations = {
           imagesAlt: ['صورة من المشروع في الوضع النهاري', 'صورة من المشروع في الوضع الليلي' ]
         },
         template3Project: {
-          title: 'موقع تدريبي يحاكي موقع تعريفي لشركة تقدم خدمات برمجية',
-          description: 'موقع تعريفي لشركة يحتوي على اقسام مثل about, priceing, services, ..elc',
+          title: 'موقع تدريبي ',
+          description: 'موقع تدريبي يحاكي موقع تعريفي لشركة تقدم خدمات برمجية يحتوي على اقسام مثل about, priceing, services, ..elc ',
           tech: ['HTML', 'Css'],
           imagesAlt: ['صورة من المشروع 1', 'صورة من المشروع 2', 'صورة من المشروع 3', 'صورة من المشروع 4']
         }
@@ -137,7 +137,7 @@ export const translations = {
     homePage: {
       softWereEngineer: 'SoftWere Engineer &',
       webDeveloper: 'Fronend Developer',
-      welcome: 'Welcome',
+      welcome: 'How Can I Help You?',
       feature1Title: 'Web Development',
       feature1Desc: 'Building modern and efficient web applications',
       feature2Title: 'Poblems Solving',
@@ -173,8 +173,8 @@ export const translations = {
           imagesAlt: [ 'An image from project in light mode',  'An image from project in dark mode']
         },
         template3Project: {
-          title: "Training website simulating a company profile offering software services",
-          description: "A company profile website that includes sections such as about, pricing, services, etc.",
+          title: "Training website",
+          description: "Training website that simulating a company profile offering software services includes sections such as about, pricing, services, etc.",
           tech: ["HTML", "CSS"],
           imagesAlt: ["Project image 1", "Project image 2", "Project image 3", "Project image 4"]
         }
@@ -182,4 +182,8 @@ export const translations = {
     },
   },
 } as const;
+
+export type Translations = typeof translations;
+export type Locale = keyof Translations;
+export type Translation = Translations[Locale];
 

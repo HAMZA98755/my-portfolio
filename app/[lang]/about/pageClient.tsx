@@ -1,20 +1,17 @@
 'use client'
 import { useTheme } from "@/app/contexts/ThemeContext";
 import Image from "next/image";
+import type { Translation } from "@/app/translations";
+import type { SkillsType } from "./page";
 
-// Type Of Proporates
+// Type of Proporaties
 type Props = {
-  t: any;
-  skills: {
-    name: string;
-    desc: string;
-  }[];
+  t: Translation;
+  skills: SkillsType
 };
 
 export default function AboutClient({ t , skills}: Props) {
-    
   const {colors} = useTheme();
-
   return (
     // Start About Section 
     <div className="py-16">

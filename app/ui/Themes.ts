@@ -27,6 +27,8 @@ export type ThemeColors = {
     }
 };
 
+export type ThemeType = keyof ThemeColors
+
 export const Themes: ThemeColors = {
     light: {
         background: "#FFFFFF",
@@ -55,14 +57,3 @@ export const Themes: ThemeColors = {
 };
               
 
-export function getThemeCssVariables (theme: 'light' | 'dark') : Record<string,string> {
-
-    const colors = Themes[theme];
-    const cssVariable: Record<string, string> = {};
-
-    Object.entries(colors).forEach(([key, value]) => {
-        cssVariable[`--${key}`] = value;
-    });
-
-    return cssVariable;
-}

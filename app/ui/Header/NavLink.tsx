@@ -13,11 +13,11 @@ export default function NavLink({ href, children, onClick }: NavLinkProps) {
   const pathname = usePathname();
   const isActive = pathname === href;
   const { colors, toggleTheme } = useTheme();
-  const th = colors;
+  
 
   return (
     <Link
-      style={{ color: th.text }}
+      style={{ color: colors.text }}
       onClick={onClick}
       href={href}
       className={`text-gray-900 text-xl pb-2 pl-0 pr-0 block w-fit font-bold p-1 hover:text-accent-300 transition font-semibo ld ${

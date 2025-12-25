@@ -1,14 +1,18 @@
 "use client";
-import { useState } from 'react';
+import { translations, type Locale } from '@/app/translations';
+import { ChangeEvent, useState } from 'react';
+import { useTheme } from '@/app/contexts/ThemeContext';
 
 
 // This Function Return Form To Contact Page
-export default function ContactForm({t , th}: {t:  any, th: any}) {
+export default function ContactForm({lang}: {lang: Locale}) {
 
 
-    const isArabic = !(t.about === 'Home');
+    const t = translations[lang];
 
-    const lang = isArabic ? 'ar' : 'en'
+    const isArabic = lang === 'ar' 
+
+    const {colors} = useTheme();
 
     const [name, setName] = useState(''); // Name State
 
@@ -65,6 +69,20 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
       setMessage('');
       setErrors({});
     }
+    // Function to Handle All Input
+    const handleChangeInput = (e: ChangeEvent<HTMLInputElement> |  ChangeEvent<HTMLTextAreaElement>, setter: (value: string) => void) => {
+      setter(e.target.value);
+      setSent(false)
+    }
+
+    // Function to Handle Name Input
+    const handleNameInput = (e: ChangeEvent<HTMLInputElement>) => handleChangeInput(e, setName)
+
+    // Function to Handle Email Input
+    const handleEmailInput = (e: ChangeEvent<HTMLInputElement>) => handleChangeInput(e, setEmail)
+
+    // Function to Handle Message Input
+    const handleMessageInput = (e: ChangeEvent<HTMLTextAreaElement>) => handleChangeInput(e, setMessage)
 
   return (
     // Start Form 
@@ -72,8 +90,8 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
       onSubmit={handleSubmit} 
       className="space-y-6 p-8 rounded-xl shadow-md"
       style={{
-        background: th.background,
-        border: `1px solid ${th.border}`
+        background: colors.background,
+        border: `1px solid ${colors.border}`
       }}
     >
       {/* This Div Will Display Just if The Info Submited  */}
@@ -82,8 +100,8 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
         <div 
           className="p-3 rounded mb-3"
           style={{
-            background: th.background,
-            color: th.buttonSecondaryBackground // green 
+            background: colors.background,
+            color: colors.buttonSecondaryBackground // green 
           }}
         >
           {lang === 'ar' ? 'تم فتح بريد العميل.' : 'Message opened in your mail client.'}
@@ -94,7 +112,7 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
       <div>
         <label 
           className="block font-bold mb-3"
-          style={{color: th.text}}
+          style={{color: colors.text}}
         >
           {t.contactPage.form.nameLabel}
         </label>
@@ -102,11 +120,7 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
          {/* This Snack Will Display if Email Error Found  */}
         {errors.name && (
           <div 
-            className="p-3 rounded mb-3"
-            style={{
-              background: th.background,
-              color: th.color
-            }}
+            className="p-3 rounded mb-3 bg-red-500 text-white"
           >
             <ul>
               <li>• {errors.name}</li>
@@ -117,14 +131,14 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
         {/* Name Input  */}
         <input 
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleNameInput}
           type="text"
           className="w-full rounded-lg px-4 py-3 focus:outline-none transition"
           style={{
-            background: th.background,
-            border: `2px solid ${th.border}`,
-            color: th.text,
-            caretColor: th.buttonPrimaryBackground
+            background: colors.background,
+            border: `2px solid ${colors.border}`,
+            color: colors.text,
+            caretColor: colors.buttonPrimaryBackground
           }}
           placeholder={t.contactPage.form.namePlaceholder}
         />
@@ -135,7 +149,7 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
       <div>
         <label 
           className="block font-bold mb-3"
-          style={{color: th.text}}
+          style={{color: colors.text}}
         >
           {t.contactPage.form.emailLabel}
         </label>
@@ -143,11 +157,7 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
         {/* This Snack Will Display if Email Error Found  */}
         {errors.email && (
           <div 
-            className="p-3 rounded mb-3"
-            style={{
-              background: th.mode === 'dark' ? '#450A0A' : '#FEF2F2',
-              color: th.mode === 'dark' ? '#FCA5A5' : '#991B1B'
-            }}
+            className="p-3 rounded mb-3 bg-red-500 text-white"
           >
             <ul>
               <li>• {errors.email}</li>
@@ -158,14 +168,14 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
         {/* Email Input  */}
         <input 
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleEmailInput}
           type="email"
           className="w-full rounded-lg px-4 py-3 focus:outline-none transition"
           style={{
-            background: th.background,
-            border: `2px solid ${th.border}`,
-            color: th.text,
-            caretColor: th.buttonPrimaryBackground
+            background: colors.background,
+            border: `2px solid ${colors.border}`,
+            color: colors.text,
+            caretColor: colors.buttonPrimaryBackground
           }}
           placeholder={t.contactPage.form.emailPlaceholder}
         />
@@ -177,7 +187,7 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
         
         <label 
           className="block font-bold mb-3"
-          style={{color: th.text}}
+          style={{color: colors.text}}
         >
           {t.contactPage.form.messageLabel}
         </label>
@@ -185,11 +195,7 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
          {/* This Snack Will Display if Message Error Found  */}
         {errors.message && (
           <div 
-            className="p-3 rounded mb-3"
-            style={{
-              background: th.mode === 'dark' ? '#450A0A' : '#FEF2F2',
-              color: th.mode === 'dark' ? '#FCA5A5' : '#991B1B'
-            }}
+            className="p-3 rounded mb-3 bg-red-500 text-white"
           >
             <ul>
               <li>• {errors.message}</li>
@@ -200,13 +206,13 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
         {/* Message Input  */}
         <textarea 
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={handleMessageInput}
           className="w-full rounded-lg px-4 py-3 h-40 focus:outline-none transition resize-none"
           style={{
-            background: th.background,
-            border: `2px solid ${th.border}`,
-            color: th.text,
-            caretColor: th.buttonPrimaryBackground
+            background: colors.background,
+            border: `2px solid ${colors.border}`,
+            color: colors.text,
+            caretColor: colors.buttonPrimaryBackground
           }}
           placeholder={t.contactPage.form.messagePlaceholder}
         />
@@ -218,8 +224,8 @@ export default function ContactForm({t , th}: {t:  any, th: any}) {
         type="submit"
         className="w-full py-3 rounded-lg font-bold text-lg hover:shadow-lg hover:scale-105 transition transform"
         style={{
-          background: th.buttonPrimaryBackground,
-          color: th.buttonPrimaryText
+          background: colors.buttonPrimaryBackground,
+          color: colors.buttonPrimaryText
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.opacity = '0.9';

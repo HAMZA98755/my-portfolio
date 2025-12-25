@@ -33,3 +33,8 @@ export const getProjectsData = (lang: 'ar' | 'en') => {
         }
     ];
 }
+
+export type ProjectsType = ReturnType <typeof getProjectsData>
+export type ProjectType = ReturnType <typeof getProjectsData> [number]
+export type ImagesType =  ProjectType['images'];
+

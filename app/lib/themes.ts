@@ -1,1 +1,0 @@
-import type {Mode} from './types'.

@@ -6,7 +6,7 @@ import Header from '@/app/ui/Header/Header';
 import Footer from '@/app/ui/Footer';
 import type { Props } from '../lib/types';
 import { ThemeProvider } from '../contexts/ThemeContext';
-import CombonentToWoarbPages from './CobonenteToWoarbPages';
+import CombonentToWoarbPages from './component/CobonenteToWoarbPages';
 export async function generateStaticParams() {
   return [
     { lang: 'ar' },
