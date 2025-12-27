@@ -58,7 +58,7 @@ export default function ContactForm({lang}: {lang: Locale}) {
 
     // This Function Handle Sent 
     function handleSent() {
-      const to = 'elhonsi99@gmail.com';
+      const to = 'elhosni99@gmail.com';
       const subject = encodeURIComponent(`${lang === 'ar' ? 'مرحبا أنا ': 'Hi, I\'m '} ${name}`);
       const body = encodeURIComponent(`${message}\n\n${t.contactPage.form.nameLabel}: ${name}\n${t.contactPage.form.emailLabel}: ${email}`);
       window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
