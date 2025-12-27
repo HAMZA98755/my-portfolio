@@ -1,10 +1,13 @@
 import Link from 'next/link';
-import { translations } from '@/app/translations';
+import { translations } from '@/app/data/translations';
+import { useLang } from '../contexts/LanguageContext';
+import type {Translation} from '../data/translations'
 
-export default function Footer({ lang }: { lang: 'ar' | 'en' }) {
+export default function Footer() {
+  const {lang} = useLang();
   const isArabic = lang === 'ar';
-  const t = translations[lang];
-
+  const t:Translation = translations[lang];
+  
   return (
     <footer className="bg-gray-900 text-white mt-1 py-4 border-t border-white">
       <div className="container">

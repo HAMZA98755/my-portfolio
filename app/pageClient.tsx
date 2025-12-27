@@ -1,37 +1,32 @@
 'use client' 
-import Hero from '@/app/ui/Hero';
-import { ReactElement } from 'react';
-import { useTheme } from '../../contexts/ThemeContext';
-import type {Translation} from '@/app/translations'
+import Hero from '@/app/component/Hero';
+import { ReactElement, useCallback } from 'react';
+import { useTheme } from './contexts/ThemeContext';
+import {translations, type Translation} from '@/app/data/translations'
+import { useLang } from './contexts/LanguageContext';
+import { getServicesData } from './data/getServicesData';
 
 
-type Props = {
-  t: Translation
-  services: {
-    name: string;
-    icon: ReactElement;
-    desc: string;
-  }[];
-};
-export default function HomeClinet({ t , services}: Props) {
+export default function HomeClinet() {
   const {colors} = useTheme();
-  
+  const {lang} = useLang();
+  const t = translations[lang];
+  const services = getServicesData(lang)
   return (
     <div>
-      <Hero t={t}/> {/* Calling Hero */}
+      <Hero/> {/* Calling Hero */}
       {/* Start Wellcome Section  */}
-      <section className="py-8 b"
-      style={{background: colors.background}}>
+      <section className="py-8">
         {/* Start Container  */}
         <div className="container">
-          <h2 className="text-4xl font-bold mb-8 text-center" style={{color: colors.text}}>{t.homePage.welcome}</h2> {/* Wellcome */}
+          <h2 className="text-4xl font-bold mb-8 text-center">{t.homePage.welcome}</h2> {/* Wellcome */}
           {/* Start Servics  */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {
               services.map((serve) => ( // This Map calls all services
                 <div key = {serve.name} className="relative p-8 rounded-xl shadow-md hover:scale-105 transition overflow-hidden" style={{background: colors.tagBackground}}> {/* Serve Collection*/}
-                  <div className="text-4xl mb-4 " style={{color: colors.tagText}}>{serve.icon}</div> {/*Serve Icon*/}
-                  <h3 className="text-xl font-bold mb-3 " style={{color: colors.text}}>{serve.name}</h3> {/* Serve Name*/ }
+                  <div className="text-4xl mb-4 ">{serve.icon}</div> {/*Serve Icon*/}
+                  <h3 className="text-xl font-bold mb-3 " >{serve.name}</h3> {/* Serve Name*/ }
                   <p className="" style={{color: colors.textSecondary}}>{serve.desc}</p> {/* Serve Short Description */}
                 </div>
               )) 

@@ -1,17 +1,15 @@
-'use client'
-import { useTheme } from "@/app/contexts/ThemeContext";
-import Image from "next/image";
-import type { Translation } from "@/app/translations";
-import type { SkillsType } from "./page";
-
-// Type of Proporaties
-type Props = {
-  t: Translation;
-  skills: SkillsType
-};
-
-export default function AboutClient({ t , skills}: Props) {
+"use client";
+import { translations } from '@/app/data/translations';
+import { useLang } from '@/app/contexts/LanguageContext';
+import { useTheme } from '../../contexts/ThemeContext';
+import Image from 'next/image';
+import {getSkillsData} from './(data)/gitSkillsData';
+// This Function Take a Params and Store it in 'lang' to Use it in Client Page 
+export default function About() {
   const {colors} = useTheme();
+  const {lang} = useLang()
+  const t = translations[lang];
+  const skills = getSkillsData(lang)  
   return (
     // Start About Section 
     <div className="py-16">
@@ -78,3 +76,5 @@ export default function AboutClient({ t , skills}: Props) {
     // End About Section 
   );
 }
+
+

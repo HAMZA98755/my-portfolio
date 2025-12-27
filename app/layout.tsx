@@ -1,30 +1,53 @@
-'use client'
+"use client";
+import { inter, cairo } from "@/app/ui/fonts";
+import { Locale } from "@/app/data/translations";
+import "@/app/globals.css";
+import Header from "@/app/component/Header/Header";
+import Footer from "@/app/component/Footer";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import LanguageProvider from "./contexts/LanguageContext";
+import { ReactNode, useEffect, useState } from "react";
+import { Metadata } from "next";
 
-import type { Metadata } from 'next';
-import "./globals.css"
-import { ThemeProvider } from './contexts/ThemeContext';
-import { ReactNode } from 'react';
-import CombonentToWoarbPages from './[lang]/component/CobonenteToWoarbPages';
-import { inter, cairo, jakartaSans } from './ui/fonts';
-
-interface LayoutProps {
-  children: ReactNode;
-  params: {
-    lang: string;
+export default function RootLayout({ children }: { children: ReactNode }) {
+  const getPreferredLocal = (): Locale => {
+    if (typeof navigator === "undefined") return "en";
+    return navigator.language?.startsWith("ar") ? "ar" : "en";
   };
-}
 
+  useEffect(() => {
+    if (typeof window !== "undefined" && !localStorage.getItem("lang")) {
+      localStorage.setItem("lang", getPreferredLocal());
+    }
+  }, []);
 
-export default function RootLayout({children, params}: LayoutProps) {
-  const {lang} = params;
-  const isArabic = lang === 'ar'
-  
+  const [lang, setLang] = useState();
 
+  const isArabic = lang == "ar";
 
   return (
-    <html lang={lang} className={`${isArabic ? cairo.variable : inter.variable} antialiased`} suppressHydrationWarning>
-      <body>
-        {children}
+    <html
+      lang={lang}
+      dir={isArabic ? "rtl" : "ltr"}
+      style={
+        {
+          "--font-inter": inter.style.fontFamily,
+          "--font-cairo": cairo.style.fontFamily,
+        } as React.CSSProperties
+      }
+    >
+      <body
+        className={`${
+          isArabic ? cairo.className : inter.className
+        } antialiased `}
+      >
+        <LanguageProvider>
+          <ThemeProvider>
+            <Header />
+            <main className="max-w-6xl mx-auto p-4">{children}</main>
+            <Footer />
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

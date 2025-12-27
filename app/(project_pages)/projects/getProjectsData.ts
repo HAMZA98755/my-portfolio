@@ -1,6 +1,6 @@
 
 
-import {translations} from '@/app/translations';
+import {translations} from '@/app/data/translations';
 // This Function Return All Data About Projects;
 export const getProjectsData = (lang: 'ar' | 'en') => { 
     const t = translations[lang];

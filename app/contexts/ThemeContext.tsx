@@ -3,7 +3,7 @@
 // This is a Theme System That Provide Themes To Pages
 
 import {createContext, useContext, useState, useMemo, ReactNode, useEffect} from 'react'
-import {Themes, type ThemeColors} from './../ui/Themes'
+import {Themes, type ThemeColors} from '../ui/Themes'
 import { Interface } from 'readline';
 
 type ThemeMode = keyof ThemeColors; // light or dark
@@ -79,7 +79,12 @@ export const ThemeProvider = ({children, initialTheme = 'light'}: TypeProviderPr
     // Return Theme Provider And set The Children Inside it
     return (
     <ThemeContext.Provider value ={value}>
-        {children}
+      <div
+          style={{ backgroundColor: colors.background, color: colors.text }}
+          className="w-full min-h-screen"
+        >
+            {children}
+      </div>
     </ThemeContext.Provider>
     )
 }

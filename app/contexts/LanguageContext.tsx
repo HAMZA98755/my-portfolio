@@ -1,36 +1,48 @@
-import { useState, useContext, createContext, ReactNode } from "react";
+'use client'
+import { useState, useContext, createContext, ReactNode, useEffect } from "react";
+import { Locale } from "../data/translations";
 
-
-type LanguageType = 'ar' | 'en';
 
 interface LanguageContextProps {
-    lang: LanguageType,
+    lang: Locale,
     toggoleLang: () => void,
-    setLang: (lang: LanguageType) => void
+    setLang: (lang: Locale) => void
 };
 
-const getPreferredLocal = () => {
-    return (typeof navigator !== undefined && (navigator.language.startsWith('ar') ? 'ar' : 'en')) as LanguageType
-} 
+
+const getPreferredLocal = (): Locale => {
+    if (typeof navigator === 'undefined') return 'en';
+    return navigator.language?.startsWith('ar') ? 'ar' : 'en';
+}
 
 
-const LanguageContext = createContext<LanguageContextProps | undefined> (undefined)
+const LanguageContext = createContext<LanguageContextProps | undefined>(undefined)
 
 export default function LanguageProvider({children}: {children: ReactNode}) {
 
-    const defaultLang = ( ( window !== undefined && localStorage.getItem('lang')) || getPreferredLocal() ) as LanguageType
+    const stored = (typeof window !== 'undefined') ? (localStorage.getItem('lang') as Locale | null) : null;
+    const defaultLang = stored ?? getPreferredLocal();
 
-    const [lang, setLang] = useState<LanguageType>(defaultLang );
+    const [lang, setLang] = useState<Locale>(defaultLang);
+    
+    useEffect(()=>{
+        const body = document.body;
+        body.dir = `${lang === 'ar' ? 'rtl' : 'ltr'}`
+    }, [lang])
 
     const toggoleLang = () => {
-        setLang(prev => prev === 'ar' ? 'en' : 'ar');
-        if (window !== undefined) {
-            localStorage.setItem('lang', lang)
-        }
+        setLang(prev => {
+            const next = prev === 'ar' ? 'en' : 'ar';
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('lang', next);
+            }
+            return next;
+        });
     }
 
+
     return (
-        <LanguageContext.Provider value = {{lang, toggoleLang, setLang}}>
+        <LanguageContext.Provider value={{lang, toggoleLang, setLang}}>
             {children}
         </LanguageContext.Provider>
     )

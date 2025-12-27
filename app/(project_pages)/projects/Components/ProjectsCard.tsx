@@ -1,7 +1,7 @@
 import { getProjectsData } from "../getProjectsData";
 import ShowImageBasedOnIndex from "./ShowImageBasedOnIndex";
 import { useTheme } from "@/app/contexts/ThemeContext";
-import {translations, type Locale}  from "@/app/translations";
+import {translations, type Locale}  from "@/app/data/translations";
 import type { ProjectsType } from "../getProjectsData";
 export default function ProjectsCard({lang}: {lang: Locale}) {
   const t = translations[lang];

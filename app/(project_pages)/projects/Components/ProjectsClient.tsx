@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useTheme } from "@/app/contexts/ThemeContext";
 import ProjectsCard from "./ProjectsCard";
-import { translations, type Locale } from "@/app/translations";
+import { translations, type Locale } from "@/app/data/translations";
 
 // Tish Function Take Projects From Page.tsx and Desplay Them On Browser
 export default function ProjectsClient({lang}: {lang: Locale}) {

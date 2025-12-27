@@ -1,5 +1,5 @@
 "use client";
-import { translations, type Locale } from '@/app/translations';
+import { translations, type Locale } from '@/app/data/translations';
 import { ChangeEvent, useState } from 'react';
 import { useTheme } from '@/app/contexts/ThemeContext';
 

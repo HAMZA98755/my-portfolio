@@ -1,9 +1,9 @@
 'use client' 
-import ContactForm from '@/app/[lang]/contact/components/ContactForm';
+import ContactForm from '@/app/(project_pages)/contact/components/ContactForm';
 import {FaFacebook, FaLinkedin, FaGithub} from 'react-icons/fa';
 import { useTheme } from '@/app/contexts/ThemeContext';
-import type {Locale} from '@/app/translations'
-import {translations} from '@/app/translations'
+import type {Locale} from '@/app/data/translations'
+import {translations} from '@/app/data/translations'
 
 export default function ContactClient({ lang }: {lang: Locale}) {
     const {colors} = useTheme();

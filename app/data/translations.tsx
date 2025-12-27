@@ -27,6 +27,7 @@ export const translations = {
       feature3Desc: ' سرعة وآمانة وموثوقية',
       feature4Title: 'تطوير تطبيقات الموبايل',
       feature4Desc: 'بناء تطبيقات موبايل ذات كفائة عالية',
+      tagLine: 'بناء صفحات ويب متجاوبة وتصاميم عصرية '
     },
 
     // UI Translitions
@@ -146,6 +147,7 @@ export const translations = {
       feature3Desc: 'Fasting, secureity, and reliablety',
       feature4Title: 'Mobail Development',
       feature4Desc: 'Building High Performance And Efective Mobile Applications',
+      tagLine: 'Building modern and responsive web applications'
     },
     ui: {
       heroTitle: 'Software Engineer',
