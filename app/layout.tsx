@@ -37,9 +37,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       }
     >
       <body
-        className={`${
-          isArabic ? cairo.className : inter.className
-        } antialiased `}
+        className={` `}
       >
         <LanguageProvider>
           <ThemeProvider>

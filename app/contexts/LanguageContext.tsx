@@ -1,6 +1,7 @@
 'use client'
 import { useState, useContext, createContext, ReactNode, useEffect } from "react";
 import { Locale } from "../data/translations";
+import { cairo, inter } from "../ui/fonts";
 
 
 interface LanguageContextProps {
@@ -28,6 +29,7 @@ export default function LanguageProvider({children}: {children: ReactNode}) {
     useEffect(()=>{
         const body = document.body;
         body.dir = `${lang === 'ar' ? 'rtl' : 'ltr'}`
+        body.classList.add(lang == 'ar' ? cairo.className : inter.className)
     }, [lang])
 
     const toggoleLang = () => {
