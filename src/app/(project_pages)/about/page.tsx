@@ -26,7 +26,7 @@ export default function About() {
           <div className="overflow-hidden rounded-2xl w-full flex justify-center">
             <div className="w-full">
                 <Image
-                  src="/images/myPhoto.jpg"
+                  src="/images/hamzaPhoto.jpg"
                   width={511}
                   height={371}
                   alt="myPhoto"

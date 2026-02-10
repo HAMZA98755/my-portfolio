@@ -25,7 +25,7 @@ export default function Hero() {
               <h1 className='text-4xl md:text-6xl lg:text-7xl font-extrabold'>{t.ui.siteName}</h1> {/* Name */}
               <div className="w-25 h-25 rounded-full overflow-hidden inline-block md:inline-flex items-center justify-center border-2 border-gray-200">
                 <Image  
-                  src="/images/myPhoto.jpg"
+                  src="/images/hamzaPhoto.jpg"
                   alt="Personal Photo"
                   width={100}
                   height={100}
