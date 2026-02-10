@@ -15,11 +15,13 @@ import { Interface } from "readline";
 
 
 const getPrefersTheme = () :ThemeMode | null => {
-  if (typeof window === undefined) return null;
-  const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-  return prefersDark ? 'dark' : 'light'
+  if (typeof window !== 'undefined'){
+    const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+    return prefersDark ? 'dark' : 'light'
+  };
+  return null;
 }
 
 type ThemeMode = keyof ThemeColors; // light or dark
@@ -49,28 +51,24 @@ export const ThemeProvider = ({
   children,
   initialTheme = "light",
 }: TypeProviderProps) => {
+
+  const savedThem = (typeof window !== 'undefined') ? (localStorage.getItem("theme")  as ThemeMode | null) : null;
+  const defautlTheme = savedThem ?? getPrefersTheme();
   // This State Store Theme
-
-
-  
-  const savedThem = localStorage.getItem("theme") as ThemeMode | null;
-  const prefered = getPrefersTheme();
-  const defautlTheme = savedThem ?? prefered;
-
-
-
   const [theme, setTheme] = useState<ThemeMode>(defautlTheme || initialTheme);
 
   const colors = Themes[theme]; // All colors In Theme
 
   useEffect(() => {
-    localStorage.setItem("theme", theme);
+    if (typeof window !== 'undefined') localStorage.setItem("theme", theme);
   }, [theme]);
   // End useEffect
 
   useEffect(() => {
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.remove("light", "dark");
+      document.documentElement.classList.add(theme);
+    }
   }, [theme]);
 
 

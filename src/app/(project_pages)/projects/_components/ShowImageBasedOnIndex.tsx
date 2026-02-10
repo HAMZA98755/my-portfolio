@@ -2,8 +2,8 @@
 import Image from 'next/image'
 import {useState} from 'react'
 import {IoIosArrowForward ,IoIosArrowBack } from "react-icons/io";
-import { useTheme } from '@/app/_contexts/ThemeContext';
-import type { Locale } from '@/app/_lib/translations';
+import { useTheme } from '@/src/_contexts/ThemeContext';
+import type { Locale } from '@/src/_lib/translations';
 import type {ImagesType } from '../_lib/porjects';
 export default function ShowImageBasedOnIndex({ images, lang}: { images: ImagesType, lang: Locale }) {
   const [idx, setIdx] = useState(0); // This State Store Index Of Current Image Will be Showed

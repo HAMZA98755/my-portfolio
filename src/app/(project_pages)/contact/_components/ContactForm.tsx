@@ -1,7 +1,7 @@
 "use client";
-import { translations, type Locale } from '@/app/_lib/translations';
+import { translations, type Locale } from '@/src/_lib/translations';
 import { ChangeEvent, useState } from 'react';
-import { useTheme } from '@/app/_contexts/ThemeContext';
+import { useTheme } from '@/src/_contexts/ThemeContext';
 
 
 // This Function Return Form To Contact Page

@@ -1,10 +1,10 @@
 'use client' 
-import ContactForm from '@/app/(project_pages)/contact/_components/ContactForm';
+import ContactForm from '@/src/app/(project_pages)/contact/_components/ContactForm';
 import {FaFacebook, FaLinkedin, FaGithub} from 'react-icons/fa';
-import { useTheme } from '@/app/_contexts/ThemeContext';
-import type {Locale} from '@/app/_lib/translations'
-import {translations} from '@/app/_lib/translations'
-import { useLang } from '@/app/_contexts/LanguageContext';
+import { useTheme } from '@/src/_contexts/ThemeContext';
+import type {Locale} from '@/src/_lib/translations'
+import {translations} from '@/src/_lib/translations'
+import { useLang } from '@/src/_contexts/LanguageContext';
 export default function ContactClient() {
     const {colors} = useTheme();
     const {lang} = useLang();

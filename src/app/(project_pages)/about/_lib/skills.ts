@@ -1,4 +1,4 @@
-import { Locale, translations, type Translation } from "@/app/_lib/translations";
+import { Locale, translations, type Translation } from "@/src/_lib/translations";
 export function getSkillsData(lang: Locale) {
     const t:Translation = translations[lang];
     return  [

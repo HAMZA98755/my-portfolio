@@ -1,7 +1,7 @@
 "use client";
-import { translations } from '@/app/_lib/translations';
-import { useLang } from '@/app/_contexts/LanguageContext';
-import { useTheme } from '../../_contexts/ThemeContext';
+import { translations } from '@/src/_lib/translations';
+import { useLang } from '@/src/_contexts/LanguageContext';
+import { useTheme } from '@/src/_contexts/ThemeContext';
 import Image from 'next/image';
 import {getSkillsData} from './_lib/skills';
 // This Function Take a Params and Store it in 'lang' to Use it in Client Page 

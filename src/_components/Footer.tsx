@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { translations } from '@/app/_lib/translations';
+import { translations } from '@/src/_lib/translations';
 import { useLang } from '../_contexts/LanguageContext';
 import type {Translation} from '../_lib/translations'
 

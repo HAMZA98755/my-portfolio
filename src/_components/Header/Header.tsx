@@ -3,11 +3,11 @@ import Link from "next/link";
 import { useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import ModeSwitcher from "./ModeSwitcher";
-import { translations } from "@/app/_lib/translations";
+import { translations } from "@/src/_lib/translations";
 import { useTheme } from "../../_contexts/ThemeContext";
 import NavLink from "./NavLink";
 import { MdOutlineMenu } from "react-icons/md";
-import { useLang } from "@/app/_contexts/LanguageContext";
+import { useLang } from "@/src/_contexts/LanguageContext";
 
 export default function HeaderClient() {
   const [open, setOpen] = useState(false);

@@ -1,11 +1,11 @@
 "use client";
-import { inter, cairo } from "@/app/_ui/fonts";
-import { Locale } from "@/app/_lib/translations";
-import "@/app/_ui/globals.css";
-import Header from "@/app/_components/Header/Header";
-import Footer from "@/app/_components/Footer";
-import { ThemeProvider } from "./_contexts/ThemeContext";
-import LanguageProvider from "./_contexts/LanguageContext";
+import { inter, cairo } from "@/src/_ui/fonts";
+import { Locale } from "@/src/_lib/translations";
+import "@/src/_ui/globals.css";
+import Header from "@/src/_components/Header/Header";
+import Footer from "@/src/_components/Footer";
+import { ThemeProvider } from "../_contexts/ThemeContext";
+import LanguageProvider from "../_contexts/LanguageContext";
 import { ReactNode, useEffect, useState } from "react";
 import { Metadata } from "next";
 

@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import { useTheme } from "@/app/_contexts/ThemeContext";
+import { useTheme } from "@/src/_contexts/ThemeContext";
 import ProjectsCard from "./ProjectsCard";
-import { translations, type Locale } from "@/app/_lib/translations";
+import { translations, type Locale } from "@/src/_lib/translations";
 
 // Tish Function Take Projects From Page.tsx and Desplay Them On Browser
 export default function ProjectsClient({lang}: {lang: Locale}) {

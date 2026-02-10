@@ -1,10 +1,10 @@
 'use client' 
-import Hero from '@/app/_components/Hero';
+import Hero from '@/src/_components/Hero';
 import { ReactElement, useCallback } from 'react';
-import { useTheme } from './_contexts/ThemeContext';
-import {translations, type Translation} from '@/app/_lib/translations'
-import { useLang } from './_contexts/LanguageContext';
-import { getServicesData } from './_lib/services';
+import { useTheme } from '@/src/_contexts/ThemeContext';
+import {translations, type Translation} from '@/src/_lib/translations'
+import { useLang } from '@/src/_contexts/LanguageContext';
+import { getServicesData } from '@/src/_lib/services';
 
 
 export default function HomeClinet() {

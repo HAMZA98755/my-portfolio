@@ -1,6 +1,6 @@
 
 
-import {translations} from '@/app/_lib/translations';
+import {translations} from '@/src/_lib/translations';
 // This Function Return All Data About Projects;
 export const getProjectsData = (lang: 'ar' | 'en') => { 
     const t = translations[lang];
@@ -11,10 +11,10 @@ export const getProjectsData = (lang: 'ar' | 'en') => {
             description: t.projectsPage.projectsList.todoProject.description,
             tech: t.projectsPage.projectsList.todoProject.tech,
             images: [
-            {imageUrl: '/images/projectsImages/todoListApp/todoListImageLight.png', imageAlt: t.projectsPage.projectsList.todoProject.imagesAlt[0]},
-            {imageUrl: '/images/projectsImages/todoListApp/todoListImageDark.png', imageAlt: t.projectsPage.projectsList.todoProject.imagesAlt[1]},
+            {imageUrl: '/images/projectsImages/todoListsrc/todoListImageLight.png', imageAlt: t.projectsPage.projectsList.todoProject.imagesAlt[0]},
+            {imageUrl: '/images/projectsImages/todoListsrc/todoListImageDark.png', imageAlt: t.projectsPage.projectsList.todoProject.imagesAlt[1]},
             ],
-            projectUrlView: 'https://todo-list-nextjs-five-orcin.vercel.app/',
+            projectUrlView: 'https://todo-list-nextjs-five-orcin.vercel.src/',
             projectUrlCode: 'https://github.com/HAMZA98755/todo-list-nextjs.git'
         },
         {

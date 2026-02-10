@@ -1,6 +1,6 @@
 'use client';
-import {cairo, inter} from '@/app/_ui/fonts'
-import { useLang } from '@/app/_contexts/LanguageContext';
+import {cairo, inter} from '@/src/_ui/fonts'
+import { useLang } from '@/src/_contexts/LanguageContext';
 export default function LanguageSwitcher({colors}: {colors: any}) {
   
   const {lang, toggoleLang} = useLang();
