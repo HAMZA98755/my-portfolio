@@ -2,6 +2,7 @@
   "name": "hamza-alhosni",
   "version": "0.1.0",
   "private": true,
+  "type": "module" ,
   "engines": {
     "node": "20.x"
   },
@@ -9,7 +10,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

@@ -1,9 +1,20 @@
-import HomeClient from './pageClient'
+'use client' 
+import Hero from '@/app/_components/Hero';
+import { ReactElement, useCallback } from 'react';
+import { useTheme } from './_contexts/ThemeContext';
+import {translations, type Translation} from '@/app/_lib/translations'
+import { useLang } from './_contexts/LanguageContext';
+import { getServicesData } from './_lib/services';
 
-// This Function Take a Params and Store it in 'lang' to Use it in Client Page 
-export default function Home() {
-  // This is Array For Services To Display in Client Page
+
+export default function HomeClinet() {
+  const {colors} = useTheme();
+  const {lang} = useLang();
+  const t = translations[lang];
+  const services = getServicesData(lang)
   return (
-    <HomeClient></HomeClient>
+    <div>
+      <Hero/> 
+    </div>
   );
 }

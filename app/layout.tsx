@@ -1,11 +1,11 @@
 "use client";
-import { inter, cairo } from "@/app/ui/fonts";
-import { Locale } from "@/app/data/translations";
-import "@/app/globals.css";
-import Header from "@/app/component/Header/Header";
-import Footer from "@/app/component/Footer";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import LanguageProvider from "./contexts/LanguageContext";
+import { inter, cairo } from "@/app/_ui/fonts";
+import { Locale } from "@/app/_lib/translations";
+import "@/app/_ui/globals.css";
+import Header from "@/app/_components/Header/Header";
+import Footer from "@/app/_components/Footer";
+import { ThemeProvider } from "./_contexts/ThemeContext";
+import LanguageProvider from "./_contexts/LanguageContext";
 import { ReactNode, useEffect, useState } from "react";
 import { Metadata } from "next";
 
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={` `}
       >
-        <LanguageProvider>
+        <LanguageProvider initialLang="en">
           <ThemeProvider>
             <Header />
             <main className="max-w-6xl mx-auto p-4">{children}</main>

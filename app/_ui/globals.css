@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+
+@layer base {
+  :root {
+    --background: #FFFFFF;
+    --border: #E5E7EB;
+    --text: #1A1A1A;
+    --textSecondary: #555555;
+    --tagBackground: #DBEAFE;
+    --tagText: #1E40AF;
+    --buttonPrimaryBackground: #2563EB;
+    --buttonPrimaryText: #FFFFFF;
+    --buttonSecondaryBackground: #22C55E;
+    --buttonSecondaryText: #FFFFFF;
+  }
+
+}
+
+@layer base {
+  
+  html, body, #__next {
+    height: 100%;
+  }
+  
+  body {
+    font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+    transition: 0.3s ease
+  }
+  .light {
+    background-color: #FFF;
+    color: #000
+  }
+  .dark {
+    background-color: #000;
+    color: #FFF
+  }
+
+
+  .container {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  
+
+  .bg-theme {
+    background-color: var(--background);
+  }
+  
+  .text-theme {
+    color: var(--text);
+  }
+  
+  .text-secondary {
+    color: var(--textSecondary);
+  }
+  
+  .border-theme {
+    border-color: var(--border);
+    border-width: 1px;
+  }
+  
+  .btn-primary {
+    background-color: var(--buttonPrimaryBackground);
+    color: var(--buttonPrimaryText);
+  }
+  
+  .btn-secondary {
+    background-color: var(--buttonSecondaryBackground);
+    color: var(--buttonSecondaryText);
+  }
+
+}
+
+

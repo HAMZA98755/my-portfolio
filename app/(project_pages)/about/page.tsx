@@ -1,9 +1,9 @@
 "use client";
-import { translations } from '@/app/data/translations';
-import { useLang } from '@/app/contexts/LanguageContext';
-import { useTheme } from '../../contexts/ThemeContext';
+import { translations } from '@/app/_lib/translations';
+import { useLang } from '@/app/_contexts/LanguageContext';
+import { useTheme } from '../../_contexts/ThemeContext';
 import Image from 'next/image';
-import {getSkillsData} from './(data)/gitSkillsData';
+import {getSkillsData} from './_lib/skills';
 // This Function Take a Params and Store it in 'lang' to Use it in Client Page 
 export default function About() {
   const {colors} = useTheme();
@@ -16,7 +16,7 @@ export default function About() {
       {/* Start Container  */}
       <div className="container">
         {/* About  */}
-        <h1 className="text-5xl font-bold mb-12" style={{color: colors.text}}>
+        <h1 className="text-5xl font-bold mb-12 text-center" style={{color: colors.text}}>
           {t.aboutPage.about}
         </h1> {/* End About Word*/}
 
@@ -44,7 +44,6 @@ export default function About() {
             </h2>
             <p className="text-lg mb-4 leading-relaxed" style={{color: colors.textSecondary}}>
               {t.aboutPage.aboutP1} 
-              {t.aboutPage.aboutP2}
             </p>
           </div>
           {/* Start Description  */}
