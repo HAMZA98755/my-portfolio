@@ -1,12 +1,16 @@
 
 
+import { useLang } from '@/src/_contexts/LanguageContext';
 import {translations} from '@/src/_lib/translations';
+import type { Project } from '@/src/_types/Project';
 // This Function Return All Data About Projects;
-export const getProjectsData = (lang: 'ar' | 'en') => { 
+export const getProjects = () => { 
+    const {lang} = useLang();
     const t = translations[lang];
     const isArabic = (lang === 'ar');
-    return [
+    const projects:Project[] = [
         {
+            id: '1',
             title: t.projectsPage.projectsList.todoProject.title,
             description: t.projectsPage.projectsList.todoProject.description,
             tech: t.projectsPage.projectsList.todoProject.tech,
@@ -18,6 +22,7 @@ export const getProjectsData = (lang: 'ar' | 'en') => {
             projectUrlCode: 'https://github.com/HAMZA98755/todo-list-nextjs.git'
         },
         {
+            id: '2',
             title: t.projectsPage.projectsList.template3Project.title,
             description: t.projectsPage.projectsList.template3Project.description,
             tech: t.projectsPage.projectsList.template3Project.tech,
@@ -31,10 +36,6 @@ export const getProjectsData = (lang: 'ar' | 'en') => {
             projectUrlCode: 'https://github.com/HAMZA98755/Template-Three'
 
         }
-    ];
+    ]
+    return projects
 }
-
-export type ProjectsType = ReturnType <typeof getProjectsData>
-export type ProjectType = ReturnType <typeof getProjectsData> [number]
-export type ImagesType =  ProjectType['images'];
-

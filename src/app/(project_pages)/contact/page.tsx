@@ -5,6 +5,7 @@ import { useTheme } from '@/src/_contexts/ThemeContext';
 import type {Locale} from '@/src/_lib/translations'
 import {translations} from '@/src/_lib/translations'
 import { useLang } from '@/src/_contexts/LanguageContext';
+import CoustemHeader from '@/src/_components/CoustemHeader';
 export default function ContactClient() {
     const {colors} = useTheme();
     const {lang} = useLang();
@@ -15,13 +16,11 @@ export default function ContactClient() {
       {/* Start Container  */}
       <div className="container max-w-4xl">
         {/*Start Contact Word   */}
-        <h1 className="text-5xl font-bold mb-4 text-center" style={{color: colors.text}}>
-          {t.contactPage.contact}
-        </h1>
+        <CoustemHeader title={t.contactPage.contact}/>
         {/*End Contact Word   */}
 
         {/* Start Contact Paragraph  */}
-        <p className="text-center text-lg mb-12" style={{color: colors.textSecondary}}>
+        <p className="text-center text-lg mb-12 mt-5" style={{color: colors.textSecondary}}>
           {t.contactPage.letMeHear}
         </p>
          {/* End Contact Paragraph  */}

@@ -4,11 +4,14 @@ import {useState} from 'react'
 import {IoIosArrowForward ,IoIosArrowBack } from "react-icons/io";
 import { useTheme } from '@/src/_contexts/ThemeContext';
 import type { Locale } from '@/src/_lib/translations';
-import type {ImagesType } from '../_lib/porjects';
-export default function ShowImageBasedOnIndex({ images, lang}: { images: ImagesType, lang: Locale }) {
+import { ProjectImage } from '@/src/_types/Project';
+import { useLang } from '@/src/_contexts/LanguageContext';
+export default function ShowImageBasedOnIndex({ images}: {images: ProjectImage[]}) {
   const [idx, setIdx] = useState(0); // This State Store Index Of Current Image Will be Showed
   const {colors} = useTheme(); 
+  const {lang} = useLang();
   const isArabic = lang === 'ar'
+
   const numberOfImages = images?.length || 0; // Return Number of Images
   if (numberOfImages === 0) return null; 
 
@@ -28,7 +31,6 @@ export default function ShowImageBasedOnIndex({ images, lang}: { images: ImagesT
           alt={images[idx].imageAlt}
           fill
           style={{ objectFit: "contain", objectPosition: "center" }}
-          className='transitions'
         />
       </div>
 
@@ -38,7 +40,6 @@ export default function ShowImageBasedOnIndex({ images, lang}: { images: ImagesT
             {/* Button to Pass to Next Image */}
             <button
                 onClick={isArabic ? next: prev}
-                aria-label="previous" 
                 className="absolute left-2  top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full"
                 >
               <IoIosArrowBack/>
@@ -46,7 +47,6 @@ export default function ShowImageBasedOnIndex({ images, lang}: { images: ImagesT
             {/* Button to Pass to Previous Image  */}
             <button
               onClick={isArabic ? prev : next}
-              aria-label="next"
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full"
             > 
             <IoIosArrowForward/>
@@ -58,8 +58,8 @@ export default function ShowImageBasedOnIndex({ images, lang}: { images: ImagesT
                   Array.from({length: numberOfImages}).map((_, i) => (
                     <div
                       key={i}
-                      className= {`${ i === idx ? 'bg-blue-600' : 'bg-black'} h-1 rounded-xl`}
-                      style={{width: `${100 / numberOfImages}%`}}
+                      className= {` h-1 rounded-xl`}
+                      style={{width: `${100 / numberOfImages}%`, backgroundColor: `${ i === idx ? '#3080ff' : colors.text}`}}
                       >
                     </div>
                   ))

@@ -4,6 +4,7 @@ import { useLang } from '@/src/_contexts/LanguageContext';
 import { useTheme } from '@/src/_contexts/ThemeContext';
 import Image from 'next/image';
 import {getSkillsData} from './_lib/skills';
+import CoustemHeader from '@/src/_components/CoustemHeader';
 // This Function Take a Params and Store it in 'lang' to Use it in Client Page 
 export default function About() {
   const {colors} = useTheme();
@@ -16,10 +17,8 @@ export default function About() {
       {/* Start Container  */}
       <div className="container">
         {/* About  */}
-        <h1 className="text-5xl font-bold mb-12 text-center" style={{color: colors.text}}>
-          {t.aboutPage.about}
-        </h1> {/* End About Word*/}
-
+        {/* End About Word*/}
+        <CoustemHeader title={t.aboutPage.about}/>
         {/* Start Image and Description  */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {/* Start Image  */}

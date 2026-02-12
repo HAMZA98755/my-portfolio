@@ -10,7 +10,7 @@ export const translations = {
     aboutPage: {
       about: "عني",
       whoAmI: " من أنا؟",
-      aboutP1: 'Junior Full-Stack Developer شغوف ببناء تطبيقات ويب حديثة ومتجاوبة تُعالج مشكلات واقعية. متخصص في تطوير React و Next.js، مع خبرة عملية في قواعد البيانات العلائقية مثل PostgreSQL وفهم قوي لبنية backend servers باستخدام Node.js.',
+      aboutP1: 'Junior Full-Stack Developer شغوف ببناء تطبيقات ويب حديثة ومتجاوبة تُعالج مشكلات واقعية. متخصص في تطوير تطبيقات الويب باستخدام React و Next.js، مع خبرة عملية في قواعد البيانات العلائقية مثل PostgreSQL وفهم قوي لبنية backend servers باستخدام Node.js.',
       skills: "المهارات",
     },
     // Home Page Translitions

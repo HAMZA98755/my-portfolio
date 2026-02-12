@@ -1,0 +1,36 @@
+.headerAnimation {
+    position: relative;
+    z-index: 1;
+}
+.headerAnimation::before,  .headerAnimation::after{
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: #3080ff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition-property: width, height, border-radius;
+    transition-duration: 1s, 0.5s, 0.2s;
+}
+.headerAnimation::before {
+    left: 0;
+}
+.headerAnimation::after {
+    right: 0;
+    
+}
+.headerAnimation:hover::before,.headerAnimation:hover::after{
+    width: calc(50% + 5px);
+    height: 100%;
+    border-radius: 0;    
+}
+.headerAnimation:hover::before {
+    border-radius: 8 0 0 8;
+}
+.headerAnimation:hover::after {
+    border-radius: 0 8 8 0;
+}
