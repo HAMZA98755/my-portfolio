@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-custom)', 'sans-serif'],
         cairo: ['var(--font-cairo)', 'system-ui', 'sans-serif'],
         jakarta: ['var(--font-jakarta)', 'system-ui', 'sans-serif'],
       },
@@ -57,3 +57,16 @@ export default {
   },
   plugins: [],
 };
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        hacker: {
+          green: '#00ff66',
+          dark: '#031209',
+          bg: '#020904',
+        },
+      },
+    },
+  },
+}

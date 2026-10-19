@@ -1,34 +1,4 @@
-// theme.ts
-
-export type ThemeColors = {
-    light: {
-        background: string,
-        border: string,
-        text: string,
-        textSecondary: string,
-        tagBackground: string,   
-        tagText: string,         
-        buttonPrimaryBackground: string, // أزرق
-        buttonPrimaryText: string,
-        buttonSecondaryBackground: string, // أخضر
-        buttonSecondaryText: string,
-    }
-    dark: {
-        background: string,
-        border: string,
-        text: string,
-        textSecondary: string,
-        tagBackground: string,   
-        tagText: string,         
-        buttonPrimaryBackground: string, // أزرق
-        buttonPrimaryText: string,
-        buttonSecondaryBackground: string, // أخضر
-        buttonSecondaryText: string,
-    }
-};
-
-export type ThemeType = keyof ThemeColors
-
+import { ThemeColors } from "../_types/types";
 export const Themes: ThemeColors = {
     light: {
         background: "#FFFFFF",

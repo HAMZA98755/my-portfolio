@@ -1,20 +1,17 @@
 'use client' 
 import Hero from '@/src/_components/Hero';
-import { ReactElement, useCallback } from 'react';
-import { useTheme } from '@/src/_contexts/ThemeContext';
-import {translations, type Translation} from '@/src/_lib/translations'
-import { useLang } from '@/src/_contexts/LanguageContext';
-import { getServicesData } from '@/src/_lib/services';
 
-
-export default function HomeClinet() {
-  const {colors} = useTheme();
-  const {lang} = useLang();
-  const t = translations[lang];
-  const services = getServicesData(lang)
+import Skills from './(project_pages)/skills/page';
+export default async function HomeClient() {
   return (
-    <div>
-      <Hero/> 
+    <div className="scroll-smooth bg-[#0B0F19]">
+      <section id="home" className="scroll-mt-24">
+        <Hero/>
+      </section>
+      {/* <Separator/> */}
+      <section id="about" className="scroll-mt-24">
+        <Skills />
+      </section>
     </div>
   );
 }

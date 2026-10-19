@@ -1,51 +1,61 @@
 "use client";
-import { inter, cairo } from "@/src/_ui/fonts";
-import { Locale } from "@/src/_lib/translations";
 import "@/src/_ui/globals.css";
 import Header from "@/src/_components/Header/Header";
 import Footer from "@/src/_components/Footer";
-import { ThemeProvider } from "../_contexts/ThemeContext";
-import LanguageProvider from "../_contexts/LanguageContext";
-import { ReactNode, useEffect, useState } from "react";
-import { Metadata } from "next";
+
+import { ReactNode } from "react";
+import localFont from 'next/font/local';
+
+
+
+
+const SyneFont = localFont({
+  src: './fonts/SpaceGrotesk-VariableFont_wght.ttf',
+  variable: '--font-heading',
+  display: 'swap',
+  weight: '400 800'
+});
+const AmazingGrotesk = localFont({
+  src:[
+    {
+      path: './fonts/Amazing Grotesk Light.otf',
+      weight: '300',
+      style: 'normal'
+    },
+    {
+      path: './fonts/Amazing Grotesk Book.otf',
+      weight: '400',
+      style: 'normal'
+    },
+    {
+      path: './fonts/Amazing Grotesk Demi.otf',
+      weight: '600',
+      style: 'normal'
+    },
+    {
+      path: './fonts/Amazing Grotesk Ultra.otf',
+      weight: '900',
+      style: 'normal'
+    },
+  ],
+  variable: '--font-heading',
+});
+
+
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const getPreferredLocal = (): Locale => {
-    if (typeof navigator === "undefined") return "en";
-    return navigator.language?.startsWith("ar") ? "ar" : "en";
-  };
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && !localStorage.getItem("lang")) {
-      localStorage.setItem("lang", getPreferredLocal());
-    }
-  }, []);
-
-  const [lang, setLang] = useState();
-
-  const isArabic = lang == "ar";
-
   return (
     <html
-      lang={lang}
-      dir={isArabic ? "rtl" : "ltr"}
-      style={
-        {
-          "--font-inter": inter.style.fontFamily,
-          "--font-cairo": cairo.style.fontFamily,
-        } as React.CSSProperties
-      }
+      lang="en"
+      dir="ltr"
+      className={AmazingGrotesk.variable}
     >
-      <body
-        className={` `}
-      >
-        <LanguageProvider initialLang="en">
-          <ThemeProvider>
-            <Header />
-            <main className="max-w-6xl mx-auto p-4">{children}</main>
+      <body className={AmazingGrotesk.className}>
+
+            {/* <Header /> */}
+            <main className="">{children}</main>
             <Footer />
-          </ThemeProvider>
-        </LanguageProvider>
+
       </body>
     </html>
   );

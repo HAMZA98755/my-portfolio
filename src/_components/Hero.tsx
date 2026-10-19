@@ -1,83 +1,123 @@
 // app/ui/Hero.tsx
-// This Page Display Some Info About Hero  
+// This Page Displays Info About Hero  
+
+'use client'; // Required For Context And UseEffect
 
 import Image from 'next/image'
 import { useTheme } from '../_contexts/ThemeContext';
 import { useLang } from '../_contexts/LanguageContext';
 import { translations } from '../_lib/translations';
-
+import Video from 'next-video'
+import myVideo from '@videos/myVideo.mp4'
+import myImage from '@/public/images/myImage.png'
+import { useRef, useEffect } from 'react';
+import { useContainerSize } from '../hooks/useContainerSize';
 
 export default function Hero() {
-  const {lang} = useLang();
-  const isArabic = lang === 'ar';
-  const t = translations[lang];
-  const {colors} = useTheme(); 
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1.5;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(err => console.log("Playback failed:", err));
+    }
+  }, []);
   return (
-    // Start Hero Section 
-    <section className="py-8">
-      {/* Start Container  */}
-      <div className="container gap-8 text-center">
-        <div className="max-w-5xl w-full h-[calc(100vh-10rem)] flex flex-col justify-between">
-          {/* Start Name and Image and description  */}
-          <div className="flex flex-col gap-4">
-            {/* Start Name and Image  */}
-            <div className="flex flex-col md:flex-row items-center gap-4 ">
-              <h1 className='text-4xl md:text-6xl lg:text-7xl font-extrabold'>{t.ui.siteName}</h1> {/* Name */}
-              <div className="w-25 h-25 rounded-full overflow-hidden inline-block md:inline-flex items-center justify-center border-2 border-gray-200">
-                <Image  
-                  src="/images/hamzaPhoto.jpg"
-                  alt="Personal Photo"
-                  width={100}
-                  height={100}
-                  className="object-cover w-full h-full"
-                /> {/* Image */}
-              </div>
-            </div>
-            {/* End Name and Image  */}
-
-            {/* Start Description  */}
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium" style={{color: colors.textSecondary}}>{t.homePage.softWereEngineer}</h2> {/*Title Jop*/}
-
-            <h2 className= 'md:self-end text-3xl md:text-5xl lg:text-6xl font-medium' style={{color: colors.textSecondary}}>{t.homePage.webDeveloper}</h2> {/* specaliz*/}
-
-
-            <p className='mt-5 text-xl md:text-2xl self-center' style={{color: colors.textSecondary}}>{t.homePage.tagLine}</p>
-
-            {/* Start Description  */}
-          </div>
-          {/* End Name and Image and description  */}
-
-
-          {/* Start Links  */}
-          <div className="justify-self-end flex justify-center gap-4 flex-wrap mt-10 mb-10">
-            {/* Start Projects Link  */}
-            <a
-              href={`/projects`}
-              className="md:w-60 bg-blue-600 text-white px-6 py-3 rounded-lg font-bold text-lg hover:shadow-xl hover:scale-105 transition transform"
-              style={{background: colors.buttonPrimaryBackground}}
-            >
-              {t.projects}
-            </a>
-            {/* End Projects Link  */}
-
-
-
-            {/* Start Contact Link  */}
-            <a
-              href={`/contact`}
-              className="md:w-md border-2 px-6 py-3 rounded-lg font-bold text-lg transition transform hover:scale-105"
-              style={{color: colors.buttonSecondaryText, background: colors.buttonSecondaryBackground}}
-            >
-              {t.contactPage.contact}
-            </a>
-            {/* End Contact Link  */}
-
-          </div>
-          {/* End Links  */}
-        </div>
+    // Start Hero Container
+    <div className="bg-[#0B0F19] container bg-gradient-to-t from-black to-[#0B0F19] relative min-h-screen w-full flex items-center py-12 md:py-0 overflow-hidden mb-30">
+      
+      {/* Start Background Video */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <Video 
+          ref={videoRef}
+          src={myVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={false}
+          aria-hidden="true"
+          preload="auto"
+          className="object-cover w-full h-full opacity-30"
+        />
+        <div className='absolute bottom-0 left-0 w-full h-40 bg-gradient-to-b  to-[#0B0F19]'></div>
       </div>
-      {/* End Container  */}
-    </section>
-    // End Hero Section
+      {/* End Background Video */}
+
+      {/* Start Main Content Grid */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-white flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        
+        <div className="flex justify-center md:justify-end order-1 md:order-2 w-full">
+          <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px]">
+            <Image
+              src={myImage}
+              alt="Hamza Alhosni"
+              fill
+              priority
+              className="object-contain [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_80%,rgba(0,0,0,0)_100%)]"
+            />
+            {/* Start Gradient Overlay Mask */}
+            {/* <div className="gradient-border absolute inset-0 border-30 border-gradient border-from-black border-to-[#0B0F19] bg-gradient-to-t from-black to-[#0B0F19] via-transparent to-transparent pointer-events-none" /> */}
+            {/* End Gradient Overlay Mask */}
+          </div>
+        </div>
+        {/* End Right Section Image */}
+
+        {/* Start Left Section Info */}
+        <div className="flex flex-col space-y-4 md:space-y-6 text-left order-2 md:order-1 w-full">
+          
+          {/* Start Name Section */}
+          <div className="flex gap-2 md:gap-4 items-baseline whitespace-nowrap">
+            <span className="text-lg md:text-2xl lg:text-3xl font-normal text-gray-400">I am</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight">Hamza Alhosni</h1>
+          </div>
+          {/* End Name Section */}
+
+          {/* Start Title Section */}
+          <div className="space-y-1">
+            <h2 className="text-xl md:text-3xl lg:text-4xl font-medium text-[#A6A6A6]">
+              Software Engineer &
+            </h2>
+            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-green-500">
+              Full-Stack Developer
+            </h2>
+          </div>
+          {/* End Title Section */}
+
+          {/* Start Paragraph Description */}
+          <div className="max-w-xl space-y-2">
+            <h3 className="text-lg md:text-2xl font-semibold text-gray-100">Welcome to My Portfolio</h3>
+            <p className="text-sm md:text-base lg:text-lg text-gray-400 leading-relaxed">
+              Explore my work, skills, and experience as a software engineer dedicated to building reliable web applications and software solutions.
+            </p>
+          </div>
+          {/* End Paragraph Description */}
+
+          {/* Start Action Links */}
+          <div className="flex flex-row sm:flex-row gap-4 pt-2 md:pt-4 w-full sm:w-auto">
+            <a 
+              href="#" 
+              className="bg-zinc-800 hover:bg-zinc-700 transition px-4 md:px-6 py-3 rounded-xl font-medium text-center text-sm md:text-base flex-1 sm:flex-none sm:min-w-[150px]"
+            >
+              Download CV
+            </a>
+            <a 
+              href="#" 
+              className="bg-blue-600 hover:bg-blue-500 transition px-4 md:px-6 py-3 rounded-xl font-medium text-center text-sm md:text-base flex-1 sm:flex-none sm:min-w-[150px]"
+            >
+              GitHub Profile
+            </a>
+          </div>
+          {/* End Action Links */}
+
+        </div>
+        {/* End Left Section Info */}
+
+      </div>
+      {/* End Main Content Grid */}
+
+    </div>
+    // End Hero Container
   );
 }

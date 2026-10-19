@@ -1,7 +1,10 @@
+import { withNextVideo } from "next-video/process";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  allowedDevOrigins:['192.168.1.105'],
+  cacheComponents: true
 };
 
-export default nextConfig;
+export default withNextVideo(nextConfig);

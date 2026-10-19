@@ -1,99 +1,4 @@
-// This Function Return All Transitoins in Arabic and English 
-
 export const translations = {
-
-  // Arabic Translation
-  ar: {
-    title: 'حمزة الحصني | مهندس برمجيات',
-    description: 'موقعي الشخصي - عرض مشاريعي وخبراتي',
-    home: 'الرئيسية',
-    aboutPage: {
-      about: "عني",
-      whoAmI: " من أنا؟",
-      aboutP1: 'Junior Full-Stack Developer شغوف ببناء تطبيقات ويب حديثة ومتجاوبة تُعالج مشكلات واقعية. متخصص في تطوير تطبيقات الويب باستخدام React و Next.js، مع خبرة عملية في قواعد البيانات العلائقية مثل PostgreSQL وفهم قوي لبنية backend servers باستخدام Node.js.',
-      skills: "المهارات",
-    },
-    // Home Page Translitions
-    homePage: {
-      softWereEngineer: 'مهندس برمجيات &',
-      webDeveloper: 'مطور تطبيقات الويب',
-      welcome: 'كيف استطيع مساعدتك؟',
-      feature1Title: 'تطوير ويب',
-      feature1Desc: 'بناء تطبيقات ويب حديثة وفعالة',
-      feature2Title: 'حل المشكلات',
-      feature2Desc: '+150 مشكلة محلولة على موقع codeforces',
-      feature3Title: 'أداء عالي',
-      feature3Desc: ' سرعة وآمانة وموثوقية',
-      tagLine: 'بناء تطبيقات ويب حديثة، متجاوبة، وذات أداء عالي'
-    },
-
-    // UI Translitions
-    ui: {
-      heroTitle: 'مهندس برمجيات ',
-      siteName: 'حمزة الحصني',
-      nav: {
-        about: 'عني',
-        projects: 'المشاريع',
-        contact: 'تواصل',
-      },
-      // Footer Translitions
-      footer: {
-        siteDesc: 'مهندس برمجيات',
-        quickLinks: 'الروابط السريعة',
-        getInTouch: 'تواصل معي',
-        copyright: 'جميع الحقوق محفوظة © حمزة الحصني 2025',
-      },
-    },
-    // Projects Page Translitions 
-    projectsPage: {
-      viewProject: 'عرض المشروع',
-      viewCode: 'الكود',
-      projectsList: {
-        todoProject: {
-          title: 'موقع ادارة مهام',
-          description: 'موقع يتيح لك اضافة مهام وحذف مهام بالأضافة الى تصنيف المهام الى مكتملة وغير مكتملة',
-          tech: ['Next.js', 'TypeScript', 'TailwindCss'],
-          imagesAlt: ['صورة من المشروع في الوضع النهاري', 'صورة من المشروع في الوضع الليلي' ]
-        },
-        template3Project: {
-          title: 'موقع تدريبي ',
-          description: 'موقع تدريبي يحاكي موقع تعريفي لشركة تقدم خدمات برمجية يحتوي على اقسام مثل about, priceing, services, ..elc ',
-          tech: ['HTML', 'Css'],
-          imagesAlt: ['صورة من المشروع 1', 'صورة من المشروع 2', 'صورة من المشروع 3', 'صورة من المشروع 4']
-        }
-      },
-    },
-    // Contact Page Translitions 
-    contactPage: {
-      contact: 'تواصل معي',
-      letMeHear: 'دعني أسمع منك! راسلني وسأرد عليك في أسرع وقت.' ,
-      getInTouch: 'معلومات التواصل',
-      email: 'البريد الإلكتروني',
-      phone: 'رقم الهاتف',
-      socialMedia: 'وسائل التواصل الاجتماعي',
-      linkedin: 'LinkedIn',
-      github: 'GitHub',
-      facebook: 'Facebook',
-      form: {
-        nameError: 'الرجاء ادخل اسمك',
-        emailError: {
-          empty: 'الرجاء ادخل بريدك الألكتروني',
-          anvalid: 'البريد الألكتروني غير صالح',
-        },
-        messageError: 'الرجاء أدخل رسالتك',
-        nameLabel: 'الاسم',
-        namePlaceholder: 'أدخل اسمك',
-        emailLabel: 'البريد الإلكتروني',
-        emailPlaceholder: 'أدخل بريدك الإلكتروني',
-        messageLabel: 'الرسالة',
-        messagePlaceholder: 'أدخل رسالتك',
-        send: 'إرسال',
-      },
-    },
-    projects: 'المشاريع',
-  },
-
-  // English Translation
   en: {
     title: 'Hamza Alhosni | Software Engineer',
     description: 'My personal website - showcasing my projects and experience',
@@ -132,7 +37,7 @@ export const translations = {
     },
     projects: 'Projects',
     homePage: {
-      softWereEngineer: 'Softwere Engineer &',
+      softWareEngineer: 'Software Engineer &',
       webDeveloper: 'Full-Stack Developer',
       welcome: 'How Can I Help You?',
       feature1Title: 'Web Development',

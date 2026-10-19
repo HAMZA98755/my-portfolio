@@ -1,18 +1,15 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import LanguageSwitcher from "./LanguageSwitcher";
 import ModeSwitcher from "./ModeSwitcher";
 import { translations } from "@/src/_lib/translations";
 import { useTheme } from "../../_contexts/ThemeContext";
 import NavLink from "./NavLink";
 import { MdOutlineMenu } from "react-icons/md";
-import { useLang } from "@/src/_contexts/LanguageContext";
 
 export default function HeaderClient() {
   const [open, setOpen] = useState(false);
-  const {lang} = useLang();
-  const t = translations[lang];
+  const t = translations.en;
   const { theme, colors, toggleTheme } = useTheme();
   
 
@@ -36,20 +33,19 @@ export default function HeaderClient() {
           <nav
             className="hidden md:flex items-center gap-4"
           >
-            <NavLink href={`/about`}>{t.aboutPage.about}</NavLink>
-            <NavLink href={`/projects`}>{t.projects}</NavLink>
-            <NavLink href={`/contact`}>{t.contactPage.contact}</NavLink>
+            <NavLink href="#about">{t.aboutPage.about}</NavLink>
+            <NavLink href="#projects">{t.projects}</NavLink>
+            <NavLink href="#contact">{t.contactPage.contact}</NavLink>
           </nav>
           {/* End Navigation  */}
 
-          {/* Strat LanguageSwitcher And Mode Switcher  */}
+          {/* Start Mode Switcher */}
           <div
             className="hidden ml-4 md:flex gap-4 justify-center items-center"
           >
-            <LanguageSwitcher colors={colors} />
             <ModeSwitcher />
           </div>
-          {/* End LanguageSwitcher And Mode Switcher  */}
+          {/* End Mode Switcher */}
 
           {/* Start Navigation In Small Screen (Menu)  */}
 
@@ -68,20 +64,17 @@ export default function HeaderClient() {
       {open && (
         <div className="md:hidden border-t border-primary-300 bg-primary-600">
           <nav className="container py-4 gap-4">
-            <NavLink href={`/about`} onClick={() => setOpen(false)}>
+            <NavLink href="#about" onClick={() => setOpen(false)}>
               {t.aboutPage.about}
             </NavLink>
-            <NavLink href={`/projects`} onClick={() => setOpen(false)}>
+            <NavLink href="#projects" onClick={() => setOpen(false)}>
               {t.projects}
             </NavLink>
-            <NavLink href={`/contact`} onClick={() => setOpen(false)}>
+            <NavLink href="#contact" onClick={() => setOpen(false)}>
               {t.contactPage.contact}
             </NavLink>
             
             <div className="flex gap-5 items-center mt-5">
-              <div className="md:flex">
-                <LanguageSwitcher colors={colors} />
-              </div>
               <div className="md:flex">
                 <ModeSwitcher />
               </div>

@@ -1,12 +1,9 @@
 import Link from 'next/link';
 import { translations } from '@/src/_lib/translations';
-import { useLang } from '../_contexts/LanguageContext';
 import type {Translation} from '../_lib/translations'
 
 export default function Footer() {
-  const {lang} = useLang();
-  const isArabic = lang === 'ar';
-  const t:Translation = translations[lang];
+  const t:Translation = translations.en;
   
   return (
     <footer className="bg-gray-900 text-white mt-1 py-4 border-t border-white">
@@ -19,9 +16,9 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-bold mb-1">{t.ui.footer.quickLinks}</h4>
             <ul className="space-y-2 flex gap-3">
-              <li><Link href={`/${lang}`} className="text-gray-400 hover:text-white transition">{t.home}</Link></li>
-              <li><Link href={`/${lang}/about`} className="text-gray-400 hover:text-white transition">{t.ui.nav.about}</Link></li>
-              <li><Link href={`/${lang}/projects`} className="text-gray-400 hover:text-white transition">{t.ui.nav.projects}</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white transition">{t.home}</Link></li>
+              <li><Link href="#about" className="text-gray-400 hover:text-white transition">{t.ui.nav.about}</Link></li>
+              <li><Link href="#projects" className="text-gray-400 hover:text-white transition">{t.ui.nav.projects}</Link></li>
             </ul>
           </div>
           <div>
