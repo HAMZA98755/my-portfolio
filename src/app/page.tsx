@@ -1,4 +1,3 @@
-'use client' 
 import Hero from '@/src/_components/Hero';
 
 import Skills from './(project_pages)/skills/page';

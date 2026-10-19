@@ -4,12 +4,10 @@
 'use client'; // Required For Context And UseEffect
 
 import Image from 'next/image'
-import { translations } from '../_lib/translations';
 import Video from 'next-video'
 import myVideo from '@videos/myVideo.mp4'
 import myImage from '@/public/images/myImage.png'
 import { useRef, useEffect } from 'react';
-import { useContainerSize } from '../hooks/useContainerSize';
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
