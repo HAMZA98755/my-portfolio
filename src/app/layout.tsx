@@ -1,20 +1,10 @@
 "use client";
 import "@/src/_ui/globals.css";
-import Header from "@/src/_components/Header/Header";
-import Footer from "@/src/_components/Footer";
 
 import { ReactNode } from "react";
 import localFont from 'next/font/local';
 
 
-
-
-const SyneFont = localFont({
-  src: './fonts/SpaceGrotesk-VariableFont_wght.ttf',
-  variable: '--font-heading',
-  display: 'swap',
-  weight: '400 800'
-});
 const AmazingGrotesk = localFont({
   src:[
     {
@@ -54,7 +44,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
             {/* <Header /> */}
             <main className="">{children}</main>
-            <Footer />
 
       </body>
     </html>

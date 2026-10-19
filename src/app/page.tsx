@@ -8,7 +8,6 @@ export default async function HomeClient() {
       <section id="home" className="scroll-mt-24">
         <Hero/>
       </section>
-      {/* <Separator/> */}
       <section id="about" className="scroll-mt-24">
         <Skills />
       </section>

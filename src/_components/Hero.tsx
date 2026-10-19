@@ -4,8 +4,6 @@
 'use client'; // Required For Context And UseEffect
 
 import Image from 'next/image'
-import { useTheme } from '../_contexts/ThemeContext';
-import { useLang } from '../_contexts/LanguageContext';
 import { translations } from '../_lib/translations';
 import Video from 'next-video'
 import myVideo from '@videos/myVideo.mp4'
