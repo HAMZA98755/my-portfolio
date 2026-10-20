@@ -18,10 +18,10 @@ export const getResponsiveLayout = (
   // Keep the graph compact and use the same dimensions as the rendered node.
   const isMobile = containerWidth < 768;
   const direction = 'TB';
-  const nodeSize = isMobile ? 96 : Math.min(124, Math.max(104, containerWidth * 0.1));
+  const nodeSize = isMobile ? 162 : Math.min(240, Math.max(216, containerWidth * 0.2));
 
-  const nodeSep = isMobile ? 16 : Math.min(32, Math.max(20, containerWidth * 0.02));
-  const rankSep = isMobile ? 30 : 42;
+  const nodeSep = isMobile ? 24 : Math.min(48, Math.max(30, containerWidth * 0.03));
+  const rankSep = isMobile ? 45 : 63;
 
   const dagreGraph = new dagre.graphlib.Graph();
   dagreGraph.setDefaultEdgeLabel(() => ({}));
@@ -30,8 +30,8 @@ export const getResponsiveLayout = (
     rankdir: direction,
     nodesep: nodeSep,
     ranksep: rankSep,
-    marginx: 12,
-    marginy: 12,
+    marginx: 18,
+    marginy: 18,
   });
 
   // 3. Add Nodes And Edges To Dagre Graph

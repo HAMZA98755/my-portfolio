@@ -115,6 +115,7 @@ const TreeContent = () => {
         height: 'clamp(360px, calc(100vh - 260px), 560px)',
         overflow: 'hidden',
       }}
+  
     >
       {error ? (
         <p className="p-4 text-center font-mono text-red-400">Unable to load skills tree.</p>

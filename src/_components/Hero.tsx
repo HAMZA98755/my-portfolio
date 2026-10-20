@@ -21,7 +21,7 @@ export default function Hero() {
   }, []);
   return (
     // Start Hero Container
-    <div className="bg-[#0B0F19] container bg-gradient-to-t from-black to-[#0B0F19] relative min-h-screen w-full flex items-center py-12 md:py-0 overflow-hidden mb-30">
+    <div className="bg-[#0B0F19] bg-gradient-to-t from-black to-[#0B0F19] relative min-h-screen w-full flex items-center py-12 md:py-0 overflow-hidden mb-30">
       
       {/* Start Background Video */}
       <div className="absolute inset-0 w-full h-full z-0">
