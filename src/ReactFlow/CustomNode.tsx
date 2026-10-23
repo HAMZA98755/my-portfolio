@@ -9,7 +9,7 @@ export interface SkillNodeData extends Record<string, unknown> {
 
 export type SkillCustomNode = Node<SkillNodeData, 'skillNode'>;
 export const SkillNode: React.FC<NodeProps<SkillCustomNode>> = ({ data }) => {
-  const { label, icon, isLocked = false} = data;
+  const { label, icon, isLocked = false, isMobile = false} = data;
   const IconComponent = icon ? (SimpleIcons as any)[icon] : null;
   return (
     <div
@@ -21,7 +21,7 @@ export const SkillNode: React.FC<NodeProps<SkillCustomNode>> = ({ data }) => {
     >
       <Handle
         type="target"
-        position={Position.Top}
+        position={isMobile ? Position.Left : Position.Top}
         className="!h-[15px] !w-[15px] !border-none !bg-[#00ff66]"
       />
       <div className="flex max-w-[86%] flex-col items-center justify-center p-1.5 text-center font-extrabold">
@@ -43,7 +43,7 @@ export const SkillNode: React.FC<NodeProps<SkillCustomNode>> = ({ data }) => {
 
       <Handle
         type="source"
-        position={Position.Bottom}
+        position={isMobile ? Position.Right : Position.Bottom }
         className="!h-[15px] !w-[15px] !border-none !bg-[#00ff66]"
       />
     </div>

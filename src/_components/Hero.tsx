@@ -49,8 +49,7 @@ export default function Hero() {
             <Image
               src={myImage}
               alt="Hamza Alhosni"
-              fill
-              priority
+              priority 
               className="object-contain [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_80%,rgba(0,0,0,0)_100%)]"
             />
             {/* Start Gradient Overlay Mask */}

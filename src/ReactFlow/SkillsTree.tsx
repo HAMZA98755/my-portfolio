@@ -14,7 +14,6 @@ import { getResponsiveLayout } from './responsiveLayout';
 import { useContainerSize } from '../hooks/useContainerSize';
 import { SkillNode, type SkillNodeData } from './CustomNode';
 import '@xyflow/react/dist/style.css';
-import { supabase } from '../utils/supabase/server';
 import { getCachedTree } from '../_lib/skills';
 import type { Skill, SkillEdge } from '../_types/types';
 type SkillNodeType = Node<SkillNodeData, 'skillNode'>;
@@ -32,13 +31,14 @@ const FIT_VIEW_OPTIONS: FitViewOptions = {
 const TreeContent = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { width, height } = useContainerSize(containerRef);
-  const { fitView } = useReactFlow();
+  const { fitView, setViewport  } = useReactFlow();
 
   const [nodes, setNodes] = useState<Node[]>([]);
   const [edges, setEdges] = useState<Edge[]>([]);
   const [rawData, setRawData] = useState<{ nodes: SkillNodeType[]; edges: Edge[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
-
+  const [responsiveHeight, setResponsiveHeight] = useState<number>(0);
+  const isMobile = width < 768;
   useEffect(() => {
     let isMounted = true;
 
@@ -84,8 +84,7 @@ const TreeContent = () => {
 
   // Recalculate layout whenever the available tree space changes.
   useEffect(() => {
-    if (!rawData || width === 0 || height === 0) return;
-
+    if (!rawData || width === 0 ) return;
     const options = {
       containerWidth: width,
       containerHeight: height,
@@ -98,21 +97,48 @@ const TreeContent = () => {
 
     setNodes(layoutedNodes.map((node) => ({
       ...node,
-      data: { ...node.data },
+      data: { ...node.data, isMobile },
     })));
+
     setEdges(layoutedEdges);
 
-    window.requestAnimationFrame(() => {
-      fitView(FIT_VIEW_OPTIONS);
-    });
-  }, [rawData, width, height, fitView]);
+    if (!isMobile) {
+      setResponsiveHeight(0); 
+      const requestAnimationTimeout = setTimeout(() => {
+        window.requestAnimationFrame(() => fitView(FIT_VIEW_OPTIONS));
+      }, 150)
+      return clearTimeout(requestAnimationTimeout)
+    }
 
+    // Calculate the size and zoom on mobile
+    const nodeSize = 162;
+    const margin = 16;
+    const xs = layoutedNodes.map((n) => n.position.x);
+    const ys = layoutedNodes.map((n) => n.position.y);
+    const minX = Math.min(...xs);
+    const minY = Math.min(...ys);
+    const treeWidth = Math.max(...xs) + nodeSize - minX;
+    const treeHeight = Math.max(...ys) + nodeSize - minY;
+
+    const zoom = (width - 2 * margin) / treeWidth;
+    setResponsiveHeight(treeHeight * zoom + 2 * margin);
+
+    window.requestAnimationFrame(() => {
+      setViewport({
+        x: margin - minX * zoom,
+        y: margin - minY * zoom,
+        zoom,
+      });
+    });
+    
+  }, [rawData, width, fitView]);
+  
   return (
     <div
       ref={containerRef}
       style={{
         width: '100%',
-        height: 'clamp(360px, calc(100vh - 260px), 560px)',
+        height: responsiveHeight > 0 ? responsiveHeight : 'clamp(360px, calc(100vh - 260px), 560px)',
         overflow: 'hidden',
       }}
   
@@ -123,7 +149,8 @@ const TreeContent = () => {
         <ReactFlow
           nodes={nodes}
           edges={edges}
-          fitView
+          
+          fitView = {!isMobile}
           fitViewOptions={FIT_VIEW_OPTIONS}
           zoomOnScroll={false}
           zoomOnPinch={false}
@@ -132,9 +159,10 @@ const TreeContent = () => {
           preventScrolling={false}
           minZoom={0.35}
           maxZoom={1.5}
-          panOnDrag={true}
-          defaultEdgeOptions={{ type: 'bezier', style }}
+          panOnDrag={false}
+          defaultEdgeOptions={{ type: 'default', style }}
           nodeTypes={nodeTypes}
+
         >
           <Background />
         </ReactFlow>

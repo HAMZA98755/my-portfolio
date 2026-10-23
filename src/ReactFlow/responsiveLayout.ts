@@ -17,7 +17,7 @@ export const getResponsiveLayout = (
 
   // Keep the graph compact and use the same dimensions as the rendered node.
   const isMobile = containerWidth < 768;
-  const direction = 'TB';
+  const direction = isMobile ? 'LR' : 'TB';
   const nodeSize = isMobile ? 162 : Math.min(240, Math.max(216, containerWidth * 0.2));
 
   const nodeSep = isMobile ? 24 : Math.min(48, Math.max(30, containerWidth * 0.03));
@@ -33,6 +33,7 @@ export const getResponsiveLayout = (
     marginx: 18,
     marginy: 18,
   });
+
 
   // 3. Add Nodes And Edges To Dagre Graph
   nodes.forEach((node) => {
