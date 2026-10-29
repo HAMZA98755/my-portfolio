@@ -119,10 +119,9 @@ const TreeContent = () => {
     const minY = Math.min(...ys);
     const treeWidth = Math.max(...xs) + nodeSize - minX;
     const treeHeight = Math.max(...ys) + nodeSize - minY;
-
     const zoom = (width - 2 * margin) / treeWidth;
     setResponsiveHeight(treeHeight * zoom + 2 * margin);
-
+    
     window.requestAnimationFrame(() => {
       setViewport({
         x: margin - minX * zoom,
@@ -132,6 +131,10 @@ const TreeContent = () => {
     });
     
   }, [rawData, width, fitView]);
+
+  // noop handler: keeps pointer-events enabled on nodes
+  // (React Flow disables them when nodes are non-selectable and non-draggable)
+  const onNodeMouseEnter = () => {}
   
   return (
     <div
@@ -162,7 +165,15 @@ const TreeContent = () => {
           panOnDrag={false}
           defaultEdgeOptions={{ type: 'default', style }}
           nodeTypes={nodeTypes}
-
+          nodesConnectable={false}
+          connectOnClick={false}
+          edgesReconnectable={false}
+          autoPanOnConnect={false}
+          autoPanOnNodeDrag={false}
+          elementsSelectable={false}
+          nodesDraggable={false}
+          nodesFocusable={false}
+          onNodeMouseEnter={onNodeMouseEnter}
         >
           <Background />
         </ReactFlow>

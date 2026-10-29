@@ -21,6 +21,7 @@ export const SkillNode: React.FC<NodeProps<SkillCustomNode>> = ({ data }) => {
     >
       <Handle
         type="target"
+        isConnectable={false}
         position={isMobile ? Position.Left : Position.Top}
         className="!h-[15px] !w-[15px] !border-none !bg-[#00ff66]"
       />
@@ -43,6 +44,7 @@ export const SkillNode: React.FC<NodeProps<SkillCustomNode>> = ({ data }) => {
 
       <Handle
         type="source"
+        isConnectable={false}
         position={isMobile ? Position.Right : Position.Bottom }
         className="!h-[15px] !w-[15px] !border-none !bg-[#00ff66]"
       />
