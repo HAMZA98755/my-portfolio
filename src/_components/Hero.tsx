@@ -92,13 +92,15 @@ export default function Hero() {
           {/* Start Action Links */}
           <div className="flex flex-row sm:flex-row gap-4 pt-2 md:pt-4 w-full sm:w-auto">
             <a 
-              href="#" 
+              href="https://dnkhfghmgpqxnssgysxw.supabase.co/storage/v1/object/public/my_resume/myResume.pdf"
+              target='_blank' 
               className="bg-zinc-800 hover:bg-zinc-700 transition px-4 md:px-6 py-3 rounded-xl font-medium text-center text-sm md:text-base flex-1 sm:flex-none sm:min-w-[150px]"
             >
               Download CV
             </a>
             <a 
-              href="#" 
+              href="https://github.com/HAMZA98755" 
+              target='_blank'
               className="bg-blue-600 hover:bg-blue-500 transition px-4 md:px-6 py-3 rounded-xl font-medium text-center text-sm md:text-base flex-1 sm:flex-none sm:min-w-[150px]"
             >
               GitHub Profile

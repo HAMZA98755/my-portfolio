@@ -152,7 +152,6 @@ const TreeContent = () => {
         <ReactFlow
           nodes={nodes}
           edges={edges}
-          
           fitView = {!isMobile}
           fitViewOptions={FIT_VIEW_OPTIONS}
           zoomOnScroll={false}

@@ -1,0 +1,148 @@
+import type { Project } from '../_types/types'
+
+export const mockProjects: Project[] = [
+  {
+    id: 101,
+    title: 'Neon Commerce',
+    slug: 'neon-commerce',
+    description: 'A High-Performance E-Commerce Experience For Independent Brands.',
+    fullDescription:
+      'Neon Commerce Is A Conversion-Focused Storefront With A Fast Product Discovery Flow, Flexible Content Sections, And A Bold Visual Language Built For Modern Retail.',
+    screenshots: [
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1556742111-a301076d9d18?auto=format&fit=crop&w=1400&q=80',
+    ],
+    theme: {
+      accentColor: '#00ff88',
+      glowColor: 'rgba(0, 255, 136, 0.22)',
+      badgeBg: 'rgba(0, 255, 136, 0.14)',
+      badgeText: '#a7ffd2',
+    },
+    githubUrl: 'https://github.com/example/neon-commerce',
+    liveUrl: 'https://example.com/neon-commerce',
+    featured: true,
+    createdAt: '2026-03-15T10:00:00.000Z',
+    skills: [
+      {
+        projectId: 101,
+        skillId: 1,
+        id: 1,
+        name: 'Next.js',
+        category: 'Frontend',
+        iconUrl: null,
+      },
+      {
+        projectId: 101,
+        skillId: 2,
+        id: 2,
+        name: 'Supabase',
+        category: 'Backend',
+        iconUrl: null,
+      },
+      {
+        projectId: 101,
+        skillId: 3,
+        id: 3,
+        name: 'Stripe',
+        category: 'Payments',
+        iconUrl: null,
+      },
+    ],
+  },
+  {
+    id: 102,
+    title: 'Flow State',
+    slug: 'flow-state',
+    description: 'A Calm Productivity Dashboard For Deep Work And Team Focus.',
+    fullDescription:
+      'Flow State Combines Personal Planning, Shared Workspaces, And Focus Sessions In One Minimal Dashboard Designed To Reduce Noise And Keep Teams Moving.',
+    screenshots: [
+      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80',
+    ],
+    theme: {
+      accentColor: '#8b5cf6',
+      glowColor: 'rgba(139, 92, 246, 0.24)',
+      badgeBg: 'rgba(139, 92, 246, 0.16)',
+      badgeText: '#ddd0ff',
+    },
+    githubUrl: 'https://github.com/example/flow-state',
+    liveUrl: 'https://example.com/flow-state',
+    featured: true,
+    createdAt: '2026-02-08T10:00:00.000Z',
+    skills: [
+      {
+        projectId: 102,
+        skillId: 4,
+        id: 4,
+        name: 'React',
+        category: 'Frontend',
+        iconUrl: null,
+      },
+      {
+        projectId: 102,
+        skillId: 5,
+        id: 5,
+        name: 'TypeScript',
+        category: 'Language',
+        iconUrl: null,
+      },
+      {
+        projectId: 102,
+        skillId: 6,
+        id: 6,
+        name: 'PostgreSQL',
+        category: 'Database',
+        iconUrl: null,
+      },
+    ],
+  },
+  {
+    id: 103,
+    title: 'Signal Archive',
+    slug: 'signal-archive',
+    description: 'An Immersive Digital Archive For Curated Visual Stories.',
+    fullDescription:
+      'Signal Archive Turns A Large Collection Of Visual Stories Into An Exploratory Editorial Experience With Rich Filtering, Fast Search, And A Responsive Reading Mode.',
+    screenshots: [
+      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1400&q=80',
+    ],
+    theme: {
+      accentColor: '#38bdf8',
+      glowColor: 'rgba(56, 189, 248, 0.22)',
+      badgeBg: 'rgba(56, 189, 248, 0.14)',
+      badgeText: '#b8ecff',
+    },
+    githubUrl: 'https://github.com/example/signal-archive',
+    liveUrl: 'https://example.com/signal-archive',
+    featured: false,
+    createdAt: '2026-01-21T10:00:00.000Z',
+    skills: [
+      {
+        projectId: 103,
+        skillId: 7,
+        id: 7,
+        name: 'Next.js',
+        category: 'Frontend',
+        iconUrl: null,
+      },
+      {
+        projectId: 103,
+        skillId: 8,
+        id: 8,
+        name: 'Tailwind CSS',
+        category: 'Styling',
+        iconUrl: null,
+      },
+      {
+        projectId: 103,
+        skillId: 9,
+        id: 9,
+        name: 'Supabase',
+        category: 'Backend',
+        iconUrl: null,
+      },
+    ],
+  },
+]

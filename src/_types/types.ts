@@ -1,16 +1,25 @@
-export type ProjectImage = {
-    imageUrl: string,
-    imageAlt: string
-}
 export type Project = {
-    id: string
-    title: string,
-    description: string,
-    tech: readonly string [],
-    images: ProjectImage[],
-    projectUrlView: string,
-    projectUrlCode: string
-        
+  id: number
+  title: string
+  slug: string
+  description: string
+  fullDescription: string | null
+  screenshots: string[]
+  theme: Record<string, unknown>
+  githubUrl: string | null
+  liveUrl: string | null
+  featured: boolean
+  createdAt: string
+  skills: ProjectSkill[]
+}
+
+export type ProjectSkill = {
+  projectId: number
+  skillId: number
+  id: number
+  name: string
+  category: string | null
+  iconUrl: string | null
 }
 
 // theme.ts

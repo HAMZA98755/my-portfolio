@@ -5,7 +5,7 @@ import React from 'react';
 
 const PageTitle: React.FC<{title:string}> = ({title}) => {
   return (
-    <div className='p-6 md:p-8 lg:p-12 mb-6 md:mb-10'>
+    <div className='p-6 md:p-8 lg:p-12'>
       {   
         title.split(" ").map((word, index) => (
           <span
